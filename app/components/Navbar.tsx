@@ -5,9 +5,10 @@ import { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [dropdownFeaturesOpen, setDropdownFeaturesOpen] = useState(false);
-  const [dropdownSignInOpen, setDropdownSignInOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [dropdownFeaturesOpen, setDropdownFeaturesOpen] =
+    useState<boolean>(false);
+  const [dropdownSignInOpen, setDropdownSignInOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -112,7 +113,7 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           <div
-            className={`absolute top-full left-0 w-full bg-white shadow-lg ${
+            className={`relative top-full left-0 w-full bg-white shadow-lg ${
               isOpen ? "block" : "hidden"
             }`}
           >
@@ -173,35 +174,35 @@ const Navbar = () => {
               </Link>
               <div className="p-3 ">
                 {/* Mobile Sign In Dropdown */}
-                <div>
-                  <button
-                    onClick={() => setDropdownSignInOpen(!dropdownSignInOpen)}
-                    className="flex items-center justify-center w-full text-white py-2 px-4 bg-blue-600 rounded-lg"
-                  >
-                    Sign In
-                    {dropdownSignInOpen ? (
-                      <ChevronUpIcon className="h-5 w-5 ml-2" />
-                    ) : (
-                      <ChevronDownIcon className="h-5 w-5 ml-2" />
-                    )}
-                  </button>
-                  {dropdownSignInOpen && (
-                    <div className="bg-white">
-                      <Link
-                        href="/"
-                        className="block p-5 text-gray-700 hover:bg-gray-100"
-                      >
-                        Sign in as Admin
-                      </Link>
-                      <Link
-                        href="/"
-                        className="block p-5 text-gray-700 hover:bg-gray-100"
-                      >
-                        Sign in as Customer Service
-                      </Link>
-                    </div>
+                <button
+                  onClick={() => setDropdownSignInOpen(!dropdownSignInOpen)}
+                  className="flex items-center justify-center w-full text-white py-2 px-4 bg-blue-600 rounded-lg"
+                >
+                  Sign In
+                  {dropdownSignInOpen ? (
+                    <ChevronUpIcon className="h-5 w-5 ml-2" />
+                  ) : (
+                    <ChevronDownIcon className="h-5 w-5 ml-2" />
                   )}
-                </div>
+                </button>
+                {dropdownSignInOpen && (
+                  <div className="bg-white mt-2">
+                    {" "}
+                    {/* Added mt-2 for spacing */}
+                    <Link
+                      href="/"
+                      className="block p-5 text-gray-700 hover:bg-gray-100"
+                    >
+                      Sign in as Admin
+                    </Link>
+                    <Link
+                      href="/"
+                      className="block p-5 text-gray-700 hover:bg-gray-100"
+                    >
+                      Sign in as Customer Service
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
