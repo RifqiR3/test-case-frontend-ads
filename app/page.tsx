@@ -342,9 +342,9 @@ const Home: React.FC = () => {
                   <div className="flex space-x-8">
                     <div className="flex-auto space-y-6 ">
                       {/* Buttons */}
-                      <div className="md:grid md:grid-cols-3 md:gap-8 hidden">
+                      <div className="md:gap-3 md:grid md:grid-cols-3 xl:gap-8 hidden">
                         <div className="col-span-1">
-                          <button className="bg-[#3366ff] text-white lg:px-3 xl:px-5 xl:py-3 rounded-lg flex justify-center w-full hover:bg-blue-800 transition-colors duration-300">
+                          <button className="bg-[#3366ff]  md:h-full items-center text-white lg:px-3 xl:px-5 xl:py-3 rounded-lg flex justify-center w-full hover:bg-blue-800 transition-colors duration-300">
                             Bisnis dan Pemasaran
                           </button>
                         </div>
@@ -354,7 +354,7 @@ const Home: React.FC = () => {
                           </button>
                         </div>
                         <div className="col-span-1">
-                          <button className="bg-white lg:px-3 lg:h-full lg:items-center xl:px-5 xl:py-3 outline outline-2 outline-[#3366ff] text-[#3366ff] rounded-lg flex justify-center w-full hover:bg-blue-800 hover:text-white hover:outline-blue-800 transition-colors duration-200">
+                          <button className="bg-white md:h-full px-3 items-center xl:px-5 xl:py-3 outline outline-2 outline-[#3366ff] text-[#3366ff] rounded-lg flex justify-center w-full hover:bg-blue-800 hover:text-white hover:outline-blue-800 transition-colors duration-200">
                             Organisasi Sosial
                           </button>
                         </div>

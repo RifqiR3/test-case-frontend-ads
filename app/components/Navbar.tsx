@@ -79,7 +79,7 @@ const Navbar = () => {
               {/* Sign In */}
               <div className="flex-1 text-right">
                 <Link
-                  href="/"
+                  href="/login"
                   className="bg-blue-600 text-white py-3 px-10 rounded-lg hover:bg-blue-800"
                 >
                   Sign In
@@ -190,7 +190,7 @@ const Navbar = () => {
                     {" "}
                     {/* Added mt-2 for spacing */}
                     <Link
-                      href="/"
+                      href="/login"
                       className="block p-5 text-gray-700 hover:bg-gray-100"
                     >
                       Sign in as Admin

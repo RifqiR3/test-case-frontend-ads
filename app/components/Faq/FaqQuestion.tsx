@@ -15,9 +15,7 @@ const FaqQuestion: React.FC<FaqQuestionProps> = ({ question, answer }) => {
           onClick={() => setQuestionOpen(!questionOpen)}
           className="flex justify-between items-center w-full"
         >
-          <span className="font-bold text-xs md:text-xl align-left">
-            {question}
-          </span>
+          <span className="font-bold text-xs md:text-xl">{question}</span>
           {questionOpen ? (
             <div className="bg-[#3366ff] w-7 h-7">
               <span className="text-white">-</span>
