@@ -1,8 +1,28 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const res = await signIn("credentials", {
+      redirect: false,
+      username,
+      password,
+    });
+    if (!res?.error) {
+      router.push("/dashboard");
+    } else {
+      alert("Daftar Dulu");
+    }
+  };
   return (
     <>
       <div className="md:bg-[#ecf2fa] min-h-screen relative">
@@ -45,36 +65,37 @@ const Login = () => {
                     Welcome Back!
                   </h1>
                   <h1 className="text-center font-semibold text-sm">
-                    We're so excited to see you again!
+                    We`re so excited to see you again!
                   </h1>
 
-                  <form action="">
+                  <form onSubmit={handleSubmit}>
                     <input
+                      required
                       type="text"
                       placeholder="Username / Email"
-                      name=""
-                      id=""
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                       className="mt-10 w-full py-2 px-4 border rounded-lg border-gray-400 outline-none focus:border-black"
                     />
                     <input
+                      required
                       type="password"
                       placeholder="Password"
-                      name=""
-                      id=""
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       className="mt-2 w-full py-2 px-4 border rounded-lg border-gray-400 outline-none focus:border-black"
                     />
+                    <div className="mt-5">
+                      <Link href="/" className="text-blue-600 font-semibold">
+                        Lupa Password?
+                      </Link>
+                    </div>
+                    <button className="mt-5 w-full bg-blue-600 text-white py-2 rounded-lg">
+                      Sign In
+                    </button>
                   </form>
 
                   <div className="mt-5">
-                    <Link href="/" className="text-blue-600 font-semibold">
-                      Lupa Password?
-                    </Link>
-                  </div>
-
-                  <div className="mt-5">
-                    <button className="w-full bg-blue-600 text-white py-2 rounded-lg">
-                      Sign In
-                    </button>
                     <p className="text-center text-sm font-semibold mt-5">
                       Butuh buat akun? {""}
                       <Link href="/sign_up" className="text-blue-600">
@@ -91,5 +112,4 @@ const Login = () => {
     </>
   );
 };
-
 export default Login;
