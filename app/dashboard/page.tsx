@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Dashboard/Sidebar";
 import PieChart from "../components/Dashboard/PieChart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,35 +9,52 @@ import {
   faBell,
   faChevronDown,
   faCog,
+  faMoon,
+  faSun,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 
 const page = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
   return (
     <>
       <html>
-        <body className="bg-white">
-          <div className="flex">
+        <body className="bg-white ">
+          <div className="flex dark:bg-[#121212]">
             <Sidebar />
             <div className="container mx-auto">
-              <div className="bg-[#f3f5f8] p-10 my-10">
-                {/* Dark Switch, Bell, Name, Setting */}
+              <div className="bg-[#f3f5f8] p-10 my-10 rounded-lg dark:bg-[#1f1f21] dark:text-white">
+                {/* Dark/Light Mode, Bell, Name, Setting */}
                 <section className="flex justify-end items-center gap-3">
+                  {/* Dark/Light */}
+                  <button
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="bg-white py-2 px-3 rounded-full text-black hover:text-white hover:bg-[#3366ff] cursor-pointer dark:bg-black dark:text-white dark:hover:bg-[#3366ff]"
+                  >
+                    <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
+                  </button>
                   {/* Bell */}
-                  <div className="bg-white py-2 px-3 rounded-full text-black hover:text-white hover:bg-[#3366ff] cursor-pointer">
+                  <div className="bg-white py-2 px-3 rounded-full text-black hover:text-white hover:bg-[#3366ff] cursor-pointer dark:bg-black dark:text-white dark:hover:bg-[#3366ff]">
                     <FontAwesomeIcon icon={faBell} />
                   </div>
                   {/* Name */}
-                  <div className="flex items-center bg-white py-2 px-10 pr-16 rounded-full relative">
-                    <p className="font-semibold">Alif Rizki</p>
-                    <p className="bg-[#3366ff] rounded-full py-2 px-3 absolute right-0 text-white">
+                  <div className="flex items-center bg-white py-2 px-10 pr-16 rounded-full relative dark:bg-black">
+                    <p className="font-semibold  dark:text-white">Alif Rizki</p>
+                    <p className="bg-[#3366ff] rounded-full py-1 px-2 absolute right-1 text-white">
                       <FontAwesomeIcon icon={faUser} />
                     </p>
                   </div>
                   {/* Setting */}
                   {/* Bell */}
-                  <div className="bg-white py-2 px-3 rounded-full text-black hover:text-white hover:bg-[#3366ff] cursor-pointer">
+                  <div className="bg-white py-2 px-3 rounded-full text-black hover:text-white hover:bg-[#3366ff] cursor-pointer dark:bg-black dark:text-white dark:hover:bg-[#3366ff]">
                     <FontAwesomeIcon icon={faCog} />
                   </div>
                 </section>
@@ -62,7 +80,7 @@ const page = () => {
                 {/* SubsDetail, Message */}
                 <section className="grid grid-cols-12 gap-3 mt-10">
                   {/* SubsDetail */}
-                  <div className="col-span-8 bg-white rounded-lg flex relative">
+                  <div className="col-span-8 bg-white rounded-lg flex relative dark:bg-[#1f1f21] dark:border dark:border-gray-500">
                     <div className="p-14 w-full">
                       {/* Package Info */}
                       <div className="flex items-center mb-8">
@@ -123,7 +141,7 @@ const page = () => {
                   </div>
 
                   {/* Messages */}
-                  <div className="col-span-4 bg-white rounded-lg flex flex-col">
+                  <div className="col-span-4 bg-white rounded-lg flex flex-col dark:bg-[#1f1f21] dark:border dark:border-gray-500">
                     <div className="p-6">
                       <h1 className="font-bold text-2xl">Pesan Terakhir</h1>
                       <Message />
@@ -138,36 +156,41 @@ const page = () => {
                 </section>
 
                 {/* Analytic */}
-                <section className="mt-5 bg-white p-7 rounded-lg">
+                <section className="mt-5 bg-white p-7 rounded-lg dark:bg-[#1f1f21] dark:border dark:border-gray-500">
                   <h1 className="text-3xl font-lexend-deca font-bold">
                     Analitik
                   </h1>
 
                   {/* Summary, Chart */}
                   <div className="mt-8 grid grid-cols-12 gap-3">
-                    <section className="col-span-4 border-solid border-2 border-gray-400 p-5 rounded-lg">
+                    {/* Summary */}
+                    <section className="col-span-4 border border-gray-400 p-5 rounded-lg dark:border-1 dark:border-gray-500">
                       <h1 className="font-bold text-xl font-lexend-deca">
                         Ringkasan hari ini
                       </h1>
 
                       {/* Row 1 */}
-                      <div className="grid grid-cols-12  gap-3">
-                        <div className="col-span-8 bg-[#f3f5f8] rounded-lg p-4 flex items-center justify-between mt-4">
+                      <div className="grid grid-cols-12 gap-3">
+                        <div className="col-span-8 bg-[#f3f5f8] dark:bg-black rounded-lg p-4 flex items-center justify-between mt-4">
                           <div>
-                            <p className="text-sm text-gray-900">Device</p>
+                            <p className="text-sm text-gray-900 dark:text-white">
+                              Device
+                            </p>
                             <p className="text-xl font-bold">RMX3263</p>
                           </div>
                           <div>
                             <FontAwesomeIcon
                               icon={faChevronDown}
-                              className="text-lg text-black"
+                              className="text-lg text-black dark:text-white"
                             />
                           </div>
                         </div>
 
-                        <div className="col-span-4 bg-[#f3f5f8] rounded-lg p-4 flex items-center mt-4">
+                        <div className="col-span-4 bg-[#f3f5f8] dark:bg-black rounded-lg p-4 flex items-center mt-4">
                           <div>
-                            <p className="text-sm text-gray-900">Aktif sejak</p>
+                            <p className="text-sm text-gray-900 dark:text-white">
+                              Aktif sejak
+                            </p>
                             <p className="text-xl font-bold">29.8.2023</p>
                           </div>
                         </div>
@@ -189,7 +212,9 @@ const page = () => {
                         </div>
                       </div>
                     </section>
-                    <section className="col-span-8 border-solid border-2 border-gray-400 p-5 rounded-lg">
+
+                    {/* Chart */}
+                    <section className="col-span-8 border border-gray-400 p-5 rounded-lg dark:border-1 dark:border-gray-500">
                       <h1 className="font-bold text-xl font-lexend-deca">
                         Total statistik pesan
                       </h1>
@@ -203,22 +228,22 @@ const page = () => {
                   </div>
 
                   {/* Line Chart */}
-                  <div className="p-12 mt-3  border-solid border-2 border-gray-400 rounded-lg">
+                  <div className="p-12 mt-3  border border-gray-400 rounded-lg dark:border-1 dark:border-gray-500">
                     {/* Row 1 */}
                     <div className="flex space-x-5 items-center">
-                      <div className="p-3 pr-24 bg-[#f3f5f8] rounded-lg">
+                      <div className="p-3 pr-24 bg-[#f3f5f8] rounded-lg dark:bg-black dark:text-white">
                         <p className="text-sm">Hari ini</p>
                         <p className="font-bold text-xl">24</p>
                       </div>
-                      <div className="p-3 bg-[#f3f5f8] rounded-lg">
+                      <div className="p-3 bg-[#f3f5f8] rounded-lg dark:bg-black dark:text-white">
                         <p className="text-sm">Rata-rata harian</p>
                         <p className="font-bold text-xl">7</p>
                       </div>
-                      <div className="p-3 pr-24 bg-[#f3f5f8] rounded-lg">
+                      <div className="p-3 pr-24 bg-[#f3f5f8] rounded-lg dark:bg-black dark:text-white">
                         <p className="text-sm">Bulan ini</p>
                         <p className="font-bold text-xl">23</p>
                       </div>
-                      <div className="p-3 bg-[#f3f5f8] rounded-lg">
+                      <div className="p-3 bg-[#f3f5f8] rounded-lg dark:bg-black dark:text-white">
                         <p className="text-sm">Rata-rata waktu</p>
                         <p className="font-bold text-xl">00:02:42</p>
                       </div>

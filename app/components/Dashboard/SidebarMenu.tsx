@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => (
   <button
-    className={`${bg} ${textColor} w-full rounded-lg p-3 text-sm flex items-center font-semibold pl-10 hover:bg-[#3366ff] hover:text-white`}
+    className={`${bg} ${textColor} w-full rounded-lg p-3 text-sm flex items-center font-semibold pl-10 hover:bg-[#3366ff] hover:text-white dark:bg-[#121212] dark:text-white dark:hover:bg-[#1f1f21]`}
     onClick={onClick}
   >
     <FontAwesomeIcon icon={icon} className="mr-3" />
@@ -55,7 +55,13 @@ const SidebarMenu: React.FC<MenuProps> = ({
   return (
     <div>
       <button
-        className={`${bg} ${textColor} w-full rounded-lg p-3 text-sm text-start flex items-center justify-between font-semibold mb-2 hover:bg-[#3366ff] hover:text-white`}
+        className={`${bg} ${textColor} w-full rounded-lg p-3 text-sm text-start flex items-center justify-between font-semibold mb-2 hover:bg-[#3366ff] hover:text-white dark:${
+          bg === "bg-[#3366ff]"
+            ? "bg-[#3366ff]"
+            : bg === "bg-[#f3f5f8]"
+            ? "bg-[#1f1f21]"
+            : "bg-[#121212]"
+        } dark:text-white dark:hover:bg-[#1f1f21]`}
         onClick={toggleDropdown}
       >
         <div className="flex items-center">

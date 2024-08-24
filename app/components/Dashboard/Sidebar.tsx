@@ -22,7 +22,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <div className="w-60 h-screen bg-white rounded-lg">
+    <div className="w-60 h-screen bg-white rounded-lg dark:bg-[#121212]">
       <div className="px-6 py-10">
         <div className="flex flex-col justify-center w-full relative">
           <Image
@@ -60,14 +60,14 @@ const Sidebar = () => {
                 icon: faAddressBook,
                 text: "Contacts",
                 textColor: "text-black",
-                onClick: () => console.log("Profile"),
+                onClick: () => console.log("Contacts"),
               },
               {
                 bg: "bg-white",
                 icon: faUserGroup,
-                text: "Contacts",
+                text: "Groups",
                 textColor: "text-black",
-                onClick: () => console.log("Profile"),
+                onClick: () => console.log("Groups"),
               },
             ]}
           />
@@ -102,7 +102,7 @@ const Sidebar = () => {
               },
             ]}
           />
-          <p className="text-sm mt-3">Tools</p>
+          <p className="text-sm mt-3 dark:text-white">Tools</p>
           <SidebarMenu
             bg="bg-white"
             icon={faTowerBroadcast}
@@ -145,7 +145,7 @@ const Sidebar = () => {
             textColor="text-black"
           />
 
-          <p className="text-sm mt-3">Others</p>
+          <p className="text-sm mt-3 dark:text-white">Others</p>
 
           <SidebarMenu
             bg="bg-white"
